@@ -15,6 +15,12 @@ namespace ControleDeEstoque.Infra.Data
 
         public DbSet<Produto> Produtos {get; set;}
         public DbSet<Estoque> Estoques {get; set;}
+
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Estoque>().HasData(new Estoque { Id = 1, Descricao = "Estoque Padrao" });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
 }
